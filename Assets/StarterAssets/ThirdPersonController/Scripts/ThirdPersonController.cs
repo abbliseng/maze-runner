@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Photon.Pun;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -123,6 +124,10 @@ namespace StarterAssets
         }
 
 
+        // MY WEIRD STUFF :D
+        PhotonView view;
+
+
         private void Awake()
         {
             // get a reference to our main camera
@@ -150,15 +155,23 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            // MY WEIRD STUFF
+            view = this.GetComponentInParent<PhotonView>();
+
         }
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
+            if (view.IsMine)
+            {
+                _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+            }
+
         }
 
         private void LateUpdate()
