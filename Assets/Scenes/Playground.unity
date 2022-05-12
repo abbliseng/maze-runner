@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8615d288e43b0d49aa03ff8d0e26392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7652653174386470378, guid: 5a5bce92c4ae0ee4d9783557ace7d3e0, type: 3}
+  playerPrefab: {fileID: 4462086735210963501, guid: 5a5bce92c4ae0ee4d9783557ace7d3e0, type: 3}
   spawnBounds: {x: 0, y: 0, z: 5, w: 5}
 --- !u!4 &563170809
 Transform:

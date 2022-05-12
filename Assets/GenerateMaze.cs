@@ -28,9 +28,11 @@ public class GenerateMaze : MonoBehaviour
         mazeObj.TestMazeGenerator();
     }
 
-    private void GenerateMazeObjects()
+    public Vector4 GenerateMazeObjects()
     {
         ClearMazeObjects();
+
+        Vector4 spawnBounds = new Vector4();
 
         GameObject ground = Instantiate(groundPrefab);
         ground.transform.position = new Vector3(mazeSize.x * wallWidth / 2 - wallWidth / 2, 0, mazeSize.y * wallWidth / 2 - wallWidth / 2);
@@ -51,6 +53,9 @@ public class GenerateMaze : MonoBehaviour
                     GameObject wallSection = Instantiate(spawnAreaPrefab);
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight / 2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
+
+                    spawnBounds = new Vector4(wallWidth * i - wallWidth / 2, wallWidth * j - wallWidth / 2, wallWidth * i + wallWidth / 2, wallWidth * j - wallWidth / 2);
+
                 } else if (maze[i, j] == 'e')
                 {
                     GameObject wallSection = Instantiate(exitAreaPrefab);
@@ -59,9 +64,10 @@ public class GenerateMaze : MonoBehaviour
                 }
             }
         }
+        return spawnBounds;
     }
 
-    private void ClearMazeObjects()
+    public void ClearMazeObjects()
     {
         foreach (GameObject wallSection in GameObject.FindGameObjectsWithTag("WallSection")) {
             //Destroy(wallSection);

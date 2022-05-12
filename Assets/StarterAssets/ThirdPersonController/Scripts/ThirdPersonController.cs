@@ -168,7 +168,7 @@ namespace StarterAssets
             }
             if (!view.IsMine)
             {
-                cam.gameObject.SetActive(false);
+                cam.enabled = false;
             }
         }
 
