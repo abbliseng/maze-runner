@@ -11,13 +11,11 @@ public class Maze : MonoBehaviour
     
     // private List<Vector2> walls; 
     // private char[,] generated_maze;
-
-    /*
-    private void Start()
+    
+    public void TestMazeGenerator()
     {
         debug_maze_texture.texture = GenerateMazeTexture(GenerateMaze((int)maze_size.x, (int)maze_size.y));
     }
-    */
 
     public Texture2D GenerateMazeTexture(char[,] maze)
     {
@@ -41,6 +39,13 @@ public class Maze : MonoBehaviour
                 } else if (maze[i, j] == 'c')
                 {
                     maze_texture.SetPixel(i, j, Color.white);
+                } else if (maze[i, j] == 's')
+                {
+                    maze_texture.SetPixel(i, j, Color.green);
+                }
+                else if (maze[i, j] == 'e')
+                {
+                    maze_texture.SetPixel(i, j, Color.blue);
                 }
             }
         }
@@ -107,7 +112,7 @@ public class Maze : MonoBehaviour
                             }
                         }
                         // Bottom cell
-                        if (x != (height - 1))
+                        if (x != (width - 1))
                         {
                             if (generated_maze[x + 1, y] != 'c')
                             {
@@ -169,7 +174,7 @@ public class Maze : MonoBehaviour
                             }
                         }
                         // Rightmost cell
-                        if (y != (width - 1))
+                        if (y != (height - 1))
                         {
                             if (generated_maze[x, y + 1] != 'c')
                             {
@@ -186,7 +191,7 @@ public class Maze : MonoBehaviour
                 }
             }
             // Check the bottom wall
-            if (x != (height - 1))
+            if (x != (width - 1))
             {
                 if (generated_maze[x + 1, y] == 'u' && generated_maze[x - 1, y] == 'c')
                 {
@@ -196,7 +201,7 @@ public class Maze : MonoBehaviour
                         generated_maze[x, y] = 'c';
                         // Mark new walls
                         // Bottom cell
-                        if (x != (height - 1))
+                        if (x != (width - 1))
                         {
                             if (generated_maze[x + 1, y] != 'c')
                             {
@@ -220,7 +225,7 @@ public class Maze : MonoBehaviour
                             }
                         }
                         // Rightmost cell
-                        if (y != (width - 1))
+                        if (y != (height - 1))
                         {
                             if (generated_maze[x, y + 1] != 'c')
                             {
@@ -237,7 +242,7 @@ public class Maze : MonoBehaviour
                 }
             }
             // Check the right wall
-            if (y != (width - 1))
+            if (y != (height - 1))
             {
                 if (generated_maze[x, y + 1] == 'u' && generated_maze[x, y - 1] == 'c')
                 {
@@ -247,7 +252,7 @@ public class Maze : MonoBehaviour
                         generated_maze[x, y] = 'c';
                         // Mark the new walls
                         // Rightmost cell
-                        if (y != (width - 1))
+                        if (y != (height - 1))
                         {
                             if (generated_maze[x, y + 1] != 'c')
                             {
@@ -259,7 +264,7 @@ public class Maze : MonoBehaviour
                             }
                         }
                         // Bottom cell
-                        if (x != (height - 1))
+                        if (x != (width - 1))
                         {
                             if (generated_maze[x + 1, y] != 'c')
                             {
@@ -300,23 +305,22 @@ public class Maze : MonoBehaviour
                 }
             }
         }
-        // Set entrance and exit
-        Debug.Log("ENTRANCE TIME");
+        // Set entrance and exit (maybe randomize which side the entence and exists should be :)
         for (int i = 0; i < width; i++)
         {
-            Debug.Log(i);
-            if (generated_maze[1, i] == 'c')
+            if (generated_maze[i, (height-2)] == 'c')
             {
-                generated_maze[0, i] = 'c';
+                //generated_maze[i, (height - 1)] = 's';
+                generated_maze[i, (height - 2)] = 's';
                 break;
             }
         }
-        Debug.Log("EXIT TIME");
-        for (int i = (width-1); i >= 0; i--)
+        for (int i = (width - 1); i >= 0; i--)
         {
-            if (generated_maze[height-2, i] == 'c')
+            if (generated_maze[i, 1] == 'c')
             {
-                generated_maze[height - 1, i] = 'c';
+                generated_maze[i, 0] = 'e';
+                generated_maze[i, 1] = 'e';
                 break;
             }
         }
