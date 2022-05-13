@@ -4,6 +4,7 @@ using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using Photon.Pun;
 
 public class GenerateMaze : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class GenerateMaze : MonoBehaviour
 
         Vector3 spawnBounds = new Vector3();
 
-        GameObject ground = Instantiate(groundPrefab);
+        GameObject ground = PhotonNetwork.Instantiate("Ground", new Vector3(0, 0, 0), Quaternion.identity);
         ground.transform.parent = mazeOverlord;
         ground.transform.position = new Vector3(mazeSize.x * wallWidth / 2 - wallWidth / 2, 0, mazeSize.y * wallWidth / 2 - wallWidth / 2);
         ground.transform.localScale = new Vector3(mazeSize.x * wallWidth / 10, 1, mazeSize.y * wallWidth / 10);
@@ -47,13 +48,13 @@ public class GenerateMaze : MonoBehaviour
             {
                 if (maze[i, j] == 'w')
                 {
-                    GameObject wallSection = Instantiate(wallSectionPrefab);
+                    GameObject wallSection = PhotonNetwork.Instantiate("WallSection", Vector3.zero, Quaternion.identity, 0);
                     wallSection.transform.parent = mazeOverlord;
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight/2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallHeight, wallWidth);
                 } else if (maze[i, j] == 's')
                 {
-                    GameObject wallSection = Instantiate(spawnAreaPrefab);
+                    GameObject wallSection = PhotonNetwork.Instantiate("SpawningArea", Vector3.zero, Quaternion.identity, 0);
                     wallSection.transform.parent = mazeOverlord;
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight / 2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
@@ -63,7 +64,7 @@ public class GenerateMaze : MonoBehaviour
 
                 } else if (maze[i, j] == 'e')
                 {
-                    GameObject wallSection = Instantiate(exitAreaPrefab);
+                    GameObject wallSection = PhotonNetwork.Instantiate("ExitArea", Vector3.zero, Quaternion.identity, 0);
                     wallSection.transform.parent = mazeOverlord;
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight / 2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
