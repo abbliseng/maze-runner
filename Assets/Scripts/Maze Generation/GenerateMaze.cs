@@ -48,9 +48,8 @@ public class GenerateMaze : MonoBehaviour
             {
                 if (maze[i, j] == 'w')
                 {
-                    GameObject wallSection = PhotonNetwork.Instantiate("WallSection", Vector3.zero, Quaternion.identity, 0);
+                    GameObject wallSection = PhotonNetwork.Instantiate("WallSection", new Vector3(wallWidth * i, wallHeight / 2, wallWidth * j), Quaternion.identity, 0);
                     wallSection.transform.parent = mazeOverlord;
-                    wallSection.transform.position = new Vector3(wallWidth * i, wallHeight/2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallHeight, wallWidth);
                 } else if (maze[i, j] == 's')
                 {
