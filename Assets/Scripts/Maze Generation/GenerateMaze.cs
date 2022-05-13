@@ -11,11 +11,12 @@ public class GenerateMaze : MonoBehaviour
     [InspectorButton("GenerateMazeTexture", ButtonWidth = 200)]
     public bool generateMazeTexture;
 
+    public Transform mazeOverlord;
     public GameObject wallSectionPrefab;
     public GameObject groundPrefab;
     public GameObject spawnAreaPrefab;
     public GameObject exitAreaPrefab;
-    public Vector2 mazeSize;
+    public Vector2 mazeSizeOverride;
     public int wallWidth;
     public int wallHeight;
     [InspectorButton("GenerateMazeObjects", ButtonWidth = 200)]
@@ -28,13 +29,14 @@ public class GenerateMaze : MonoBehaviour
         mazeObj.TestMazeGenerator();
     }
 
-    public Vector4 GenerateMazeObjects()
+    public Vector3 GenerateMazeObjects(Vector2 mazeSize)
     {
         ClearMazeObjects();
 
-        Vector4 spawnBounds = new Vector4();
+        Vector3 spawnBounds = new Vector3();
 
         GameObject ground = Instantiate(groundPrefab);
+        ground.transform.parent = mazeOverlord;
         ground.transform.position = new Vector3(mazeSize.x * wallWidth / 2 - wallWidth / 2, 0, mazeSize.y * wallWidth / 2 - wallWidth / 2);
         ground.transform.localScale = new Vector3(mazeSize.x * wallWidth / 10, 1, mazeSize.y * wallWidth / 10);
 
@@ -46,19 +48,23 @@ public class GenerateMaze : MonoBehaviour
                 if (maze[i, j] == 'w')
                 {
                     GameObject wallSection = Instantiate(wallSectionPrefab);
+                    wallSection.transform.parent = mazeOverlord;
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight/2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallHeight, wallWidth);
                 } else if (maze[i, j] == 's')
                 {
                     GameObject wallSection = Instantiate(spawnAreaPrefab);
+                    wallSection.transform.parent = mazeOverlord;
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight / 2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
 
-                    spawnBounds = new Vector4(wallWidth * i - wallWidth / 2, wallWidth * j - wallWidth / 2, wallWidth * i + wallWidth / 2, wallWidth * j - wallWidth / 2);
+                    spawnBounds = new Vector3(wallSection.transform.position.x, 5, wallSection.transform.position.z);
+                    // spawnBounds = new Vector4(wallWidth * i - wallWidth / 2, wallWidth * j - wallWidth / 2, wallWidth * i + wallWidth / 2, wallWidth * j - wallWidth / 2);
 
                 } else if (maze[i, j] == 'e')
                 {
                     GameObject wallSection = Instantiate(exitAreaPrefab);
+                    wallSection.transform.parent = mazeOverlord;
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight / 2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
                 }
