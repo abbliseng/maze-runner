@@ -8,10 +8,11 @@ public class SpawnPlayers : MonoBehaviour
     public GameObject playerPrefab;
     public GenerateMaze maze_generator;
 
-    private Vector3 spawnBounds;
+    private Vector3 spawnBounds = new Vector3(0,105,0);
 
     public void Start()
     {
+        /*
         if (PhotonNetwork.IsMasterClient)
         {
             Debug.Log("Generate Maze :)");
@@ -21,6 +22,7 @@ public class SpawnPlayers : MonoBehaviour
             spawnBounds = maze_generator.GenerateMazeObjects(new Vector2(mazeWidth, mazeHeight));
             Debug.Log(spawnBounds);
         }
+        */
 
         Vector3 randomPosition = spawnBounds;
         PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
