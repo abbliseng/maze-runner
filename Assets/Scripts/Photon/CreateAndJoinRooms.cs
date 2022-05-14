@@ -21,6 +21,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Main");
+        // PhotonNetwork.LoadLevel("GBCamera_RenderTexture");
+        PhotonNetwork.LoadLevel("Mazeboi");
     }
 }

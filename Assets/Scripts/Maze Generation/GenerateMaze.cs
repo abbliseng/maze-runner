@@ -52,6 +52,7 @@ public class GenerateMaze : MonoBehaviour
                     wallSection.transform.parent = mazeOverlord;
                     wallSection.transform.position = new Vector3(wallWidth * i, wallHeight / 2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallHeight, wallWidth);
+                    wallSection.GetComponent<Renderer>().material.mainTextureScale = new Vector2(wallWidth, wallHeight);
                 } else if (maze[i, j] == 's')
                 {
                     GameObject wallSection = PhotonNetwork.InstantiateRoomObject("SpawningArea", Vector3.zero, Quaternion.identity, 0);
