@@ -25,6 +25,9 @@ public class SpawnPlayers : MonoBehaviour
         */
 
         Vector3 randomPosition = spawnBounds;
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        // player.transform.localScale = new Vector3(Random.Range(0.2f, 1.5f), Random.Range(0.2f, 1.5f), Random.Range(0.2f, 1.5f));
+        // player.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.blue;
+        //.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
 }

@@ -319,7 +319,7 @@ public class Maze : MonoBehaviour
         {
             if (generated_maze[i, 1] == 'c')
             {
-                generated_maze[i, 0] = 'e';
+                // generated_maze[i, 0] = 'e';
                 generated_maze[i, 1] = 'e';
                 break;
             }

@@ -28,7 +28,7 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: 
+  DevRegion: ru
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
@@ -39,6 +39,16 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - <Update>g__Off|5_2
+  - <Update>g__On|5_1
+  - <Update>g__Off|4_2
+  - <Update>g__On|4_1
+  - Off
+  - On
+  - SendSomething
+  - turnOffFlashlight
+  - turnOnFlashlight
+  - generateWall
   DisableAutoOpenWizard: 1
   ShowSettings: 0
-  DevRegionSetOnce: 0
+  DevRegionSetOnce: 1

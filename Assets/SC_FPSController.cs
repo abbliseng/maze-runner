@@ -16,6 +16,8 @@ public class SC_FPSController : MonoBehaviour
     public Camera playerPixelCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+    public float rotationSpeed = 1.0f;
+    public Transform body;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -66,11 +68,24 @@ public class SC_FPSController : MonoBehaviour
         
     }
 
+    public void teleportALLPlayersToStart()
+    {
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
+            player.GetComponent<CharacterController>().enabled = true;
+        }
+
+    }
+
     void Update()
     {
         if (view.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            body.Rotate(new Vector3(0, 1, 0)*rotationSpeed);
+
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
                 mainMenu.SetActive(!mainMenu.activeSelf);
                 if (PhotonNetwork.IsMasterClient)
