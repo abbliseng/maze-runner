@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 222723672661126670, guid: 4d1d621080d62fa4a811b834918ee0cb, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 222723672661126670, guid: 4d1d621080d62fa4a811b834918ee0cb, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 222723672661126670, guid: 4d1d621080d62fa4a811b834918ee0cb, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 222723672661126670, guid: 4d1d621080d62fa4a811b834918ee0cb, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2182760069855007271, guid: 4d1d621080d62fa4a811b834918ee0cb, type: 3}
       propertyPath: m_Name
       value: Actual Camera
@@ -504,7 +520,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46f450be3daead24782ac6e33e8574d9, type: 2}
+  - {fileID: 2100000, guid: a23526ed5223de74792c7b3b03f38dcf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
