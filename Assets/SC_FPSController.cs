@@ -37,10 +37,13 @@ public class SC_FPSController : MonoBehaviour
     private GenerateMaze generateMaze;
     private Vector3 mazeStart;
 
+    private PlayerStuff playerStuff;
+
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        playerStuff = GetComponent<PlayerStuff>();
 
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -65,7 +68,7 @@ public class SC_FPSController : MonoBehaviour
         gameObject.GetComponent<CharacterController>().enabled = false;
         gameObject.transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
         gameObject.GetComponent<CharacterController>().enabled = true;
-        
+        playerStuff.ResetTimer(); // MIGHT NOT WANT THIS HERE        
     }
 
     public void teleportALLPlayersToStart()
