@@ -56,7 +56,7 @@ public class GenerateMaze : MonoBehaviour
         {
             for (int j = 0; j < maze.GetLength(1); j++)
             {
-                if (maze[i, j] == 'w')
+                /*if (maze[i, j] == 'w')
                 {
                     GameObject wallSection = PhotonNetwork.InstantiateRoomObject("WallSection", Vector3.zero, Quaternion.identity, 0);
                     Debug.Log("Placing walls: " + gameObject.name);
@@ -64,7 +64,7 @@ public class GenerateMaze : MonoBehaviour
                     wallSection.transform.position = new Vector3(wallWidth * i, wallWidth/2, wallWidth * j);
                     wallSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
                     // wallSection.GetComponent<Renderer>().material.mainTextureScale = new Vector2(wallWidth, wallHeight);
-                } else if (maze[i, j] == 's')
+                } else */if (maze[i, j] == 's')
                 {
                     GameObject spawnSection = PhotonNetwork.InstantiateRoomObject("SpawningArea", Vector3.zero, Quaternion.identity, 0);
                     spawnSection.transform.parent = mazeOverlord;
@@ -73,44 +73,25 @@ public class GenerateMaze : MonoBehaviour
 
                     spawnBounds = new Vector3(spawnSection.transform.position.x, 5, spawnSection.transform.position.z);
 
-                    GameObject spawnFloorSection = PhotonNetwork.InstantiateRoomObject("FlatSection", Vector3.zero, Quaternion.identity, 0);
-                    spawnFloorSection.transform.parent = mazeOverlord;
-                    spawnFloorSection.transform.position = new Vector3(wallWidth * i, -0.5f + 1f / 12f, wallWidth * j);
-                    spawnFloorSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
-                    // spawnBounds = new Vector4(wallWidth * i - wallWidth / 2, wallWidth * j - wallWidth / 2, wallWidth * i + wallWidth / 2, wallWidth * j - wallWidth / 2);
-
-                    GameObject flatTopSection = PhotonNetwork.InstantiateRoomObject("RoofSection", Vector3.zero, Quaternion.identity, 0);
-                    flatTopSection.transform.parent = mazeOverlord;
-                    flatTopSection.transform.position = new Vector3(wallWidth * i, wallWidth - 1f - 2f / 6f, wallWidth * j);
-                    flatTopSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
-
                 } else if (maze[i, j] == 'e')
                 {
                     GameObject exitSection = PhotonNetwork.InstantiateRoomObject("ExitArea", Vector3.zero, Quaternion.identity, 0);
                     exitSection.transform.parent = mazeOverlord;
                     exitSection.transform.position = new Vector3(wallWidth * i, 0, wallWidth * j);
                     exitSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
-
-                    GameObject exitFloorSection = PhotonNetwork.InstantiateRoomObject("FlatSection", Vector3.zero, Quaternion.identity, 0);
-                    exitFloorSection.transform.parent = mazeOverlord;
-                    exitFloorSection.transform.position = new Vector3(wallWidth * i, -0.5f + 1f / 12f, wallWidth * j);
-                    exitFloorSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
-
-                    GameObject flatTopSection = PhotonNetwork.InstantiateRoomObject("RoofSection", Vector3.zero, Quaternion.identity, 0);
-                    flatTopSection.transform.parent = mazeOverlord;
-                    flatTopSection.transform.position = new Vector3(wallWidth * i, wallWidth - 1f - 2f / 6f, wallWidth * j);
-                    flatTopSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
-                } else if (maze[i, j] == 'c')
+                }
+                if (maze[i, j] == 'c' || maze[i, j] == 's' || maze[i, j] == 'e')
                 {
                     GameObject flatSection = PhotonNetwork.InstantiateRoomObject("FlatSection", Vector3.zero, Quaternion.identity, 0);
                     flatSection.transform.parent = mazeOverlord;
                     flatSection.transform.position = new Vector3(wallWidth * i, -0.5f+1f/12f, wallWidth * j);
                     flatSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
-
+                    /*
                     GameObject flatTopSection = PhotonNetwork.InstantiateRoomObject("RoofSection", Vector3.zero, Quaternion.identity, 0);
                     flatTopSection.transform.parent = mazeOverlord;
                     flatTopSection.transform.position = new Vector3(wallWidth * i, wallWidth - 1f - 2f / 6f, wallWidth * j);
                     flatTopSection.transform.localScale = new Vector3(wallWidth, wallWidth, wallWidth);
+                    */
                 }
             }
         }
