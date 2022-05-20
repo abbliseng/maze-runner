@@ -13,17 +13,25 @@ public class PlayerStuff : MonoBehaviour
 
     private float timeOffset = 0f;// 45f + 59*60 + 23*60*60;
 
+    private PhotonView view;
+
     private void Start()
     {
         startTime = Time.time;
+        view = gameObject.GetComponent<PhotonView>();
     }
 
     void Update()
     {
-        if (runTimer)
+        if (view.IsMine) {
+            if (runTimer)
+            {
+                // Debug.Log(Timer());
+                displayText.text = Timer();
+            }
+        } else
         {
-            // Debug.Log(Timer());
-            displayText.text = Timer();
+            displayText.gameObject.SetActive(false);
         }
     }
 

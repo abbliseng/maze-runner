@@ -56,6 +56,92 @@ public class GenerateMaze : MonoBehaviour
         {
             for (int j = 0; j < maze.GetLength(1); j++)
             {
+                string wallString = "";
+                if (maze[i,j] == 'c' || maze[i,j] == 's' || maze[i,j] == 'e')
+                {
+                    wallString += maze[i - 1, j] == 'w' ? 'X' : 'C';
+                    wallString += maze[i + 1, j] == 'w' ? 'X' : 'C';
+                    wallString += maze[i, j - 1] == 'w' ? 'X' : 'C';
+                    wallString += maze[i, j + 1] == 'w' ? 'X' : 'C';
+                }
+                switch (wallString)
+                {
+                    case "XXXX":
+                        //  X
+                        // XCX
+                        //  X
+                        break;
+                    // ÅTERVÄNDSGRÄNDER
+                    case "CXXX":
+                        //  X
+                        // CCX
+                        //  X
+                        break;
+                    case "XCXX":
+                        //  X
+                        // XCC
+                        //  X
+                        break;
+                    case "XXCX":
+                        //  X
+                        // XCX
+                        //  C
+                        break;
+                    case "XXXC":
+                        //  C
+                        // XCX
+                        //  X
+                        break;
+                    // KORRIDORER
+                    case "CCXX":
+                        //  X
+                        // CCC
+                        //  X
+                        break;
+                    case "CXCX":
+                        //  X
+                        // CCX
+                        //  C
+                        break;
+                    case "CXXC":
+                        //  C
+                        // CCX
+                        //  X
+                        break;
+                    case "XCCX":
+                        //  X
+                        // XCC
+                        //  C
+                        break;
+                    // 3-VÄGS KORSNINGAR
+                    case "CCCX":
+                        //  X
+                        // CCC
+                        //  C
+                        break;
+                    case "CXCC":
+                        //  C
+                        // CCX
+                        //  C
+                        break;
+                    case "CCXC":
+                        //  C
+                        // CCC
+                        //  X
+                        break;
+                    case "XCCC":
+                        //  C
+                        // XCC
+                        //  C
+                        break;
+                    // 4-VÄGS KORSNING
+                    case "CCCC":
+                        //  C
+                        // CCC
+                        //  C
+                        break;
+                }
+
                 /*if (maze[i, j] == 'w')
                 {
                     GameObject wallSection = PhotonNetwork.InstantiateRoomObject("WallSection", Vector3.zero, Quaternion.identity, 0);

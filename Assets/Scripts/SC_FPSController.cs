@@ -86,6 +86,13 @@ public class SC_FPSController : MonoBehaviour
     {
         if (view.IsMine)
         {
+            if (transform.position.y <= -20)
+            {
+                //Debug.Log("Teleport to the start");
+                teleportPlayersToStart();
+                return;
+            }
+
             body.Rotate(new Vector3(0, 1, 0)*rotationSpeed);
 
             if (Input.GetKeyDown(KeyCode.Tab))
@@ -108,16 +115,16 @@ public class SC_FPSController : MonoBehaviour
             float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
             float movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-            /*
-            if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+            
+            /*if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
             {
                 moveDirection.y = jumpSpeed;
             }
             else
-            {
+            {*/
                 moveDirection.y = movementDirectionY;
-            }
-            */
+            //}
+            
 
             // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
             // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8049568379104291058}
   m_Layer: 0
   m_Name: RoofSection
-  m_TagString: WallSection
+  m_TagString: GroundSection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,6 +11,7 @@ public class Items : MonoBehaviour
     public int amount;
     public Transform textObject;
     public TextMeshPro promptDisplay;
+    public Plane texturePlane;
 
     private GameObject closestPlayer;
 
@@ -29,14 +30,16 @@ public class Items : MonoBehaviour
         }
         if (minDist < 3f)
         {
-            textObject.gameObject.SetActive(true);
+            //textObject.gameObject.SetActive(true);
         }else
         {
-            textObject.gameObject.SetActive(false);
+            //textObject.gameObject.SetActive(false);
         }
 
-        textObject.LookAt(closestPlayer.transform);
-        textObject.Rotate(0, 180, 0);
+        //textObject.LookAt(closestPlayer.transform);
+        //textObject.Rotate(0, 180, 0);
+        transform.LookAt(closestPlayer.transform);
+        // transform.Rotate(0, 180, 0);
     }
 
     public void PickUp()

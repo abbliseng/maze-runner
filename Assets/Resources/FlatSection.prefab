@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 742649667677770305}
   m_Layer: 0
   m_Name: FlatSection
-  m_TagString: Untagged
+  m_TagString: GroundSection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
