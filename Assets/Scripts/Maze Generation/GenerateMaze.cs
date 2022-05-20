@@ -64,6 +64,7 @@ public class GenerateMaze : MonoBehaviour
                     wallString += maze[i, j - 1] == 'w' ? 'X' : 'C';
                     wallString += maze[i, j + 1] == 'w' ? 'X' : 'C';
                 }
+                // 14 möjliga cell tiles, beroende på hur många vägar som leder dit
                 switch (wallString)
                 {
                     case "XXXX":
